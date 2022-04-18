@@ -1,0 +1,8 @@
+plantuml==0.3.0
+httplib2==0.20.4
+pyparsing==3.0.8
+requests==2.27.1
+urllib3==1.26.9
+idna==3.3
+charset-normalizer==2.0.12
+streamlit==1.8.1
