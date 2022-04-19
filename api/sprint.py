@@ -1,8 +1,11 @@
 
-class Sprint:
-    def __init__(self):
-        print()
+# generate sprint
+
+def gen_sprint(cur):
+    # Get highest priority first
+    # Get metrics (Current Velocity)
+    sql = """INSERT INTO vendors(vendor_name)
+                 VALUES(%s) RETURNING vendor_id;"""
+    response = cur.ex
 
 
-if __name__ == '__main__':
-    Sprint()

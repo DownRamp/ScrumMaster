@@ -15,18 +15,18 @@ def connect():
         conn = psycopg2.connect(**params)
 
         # create a cursor
-        cur = conn.cursor()
+        return conn.cursor()
 
-        # execute a statement
-        print('PostgreSQL database version:')
-        cur.execute('SELECT version()')
-
-        # display the PostgreSQL database server version
-        db_version = cur.fetchone()
-        print(db_version)
-
-        # close the communication with the PostgreSQL
-        cur.close()
+        # # execute a statement
+        # print('PostgreSQL database version:')
+        # cur.execute('SELECT version()')
+        #
+        # # display the PostgreSQL database server version
+        # db_version = cur.fetchone()
+        # print(db_version)
+        #
+        # # close the communication with the PostgreSQL
+        # cur.close()
     except (Exception, psycopg2.DatabaseError) as error:
         print(error)
     finally:

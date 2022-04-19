@@ -1,11 +1,13 @@
 
-class Backlog:
-    def __init__(self):
-        print()
-        # Spit out one or multiple tickets
-        # Handle higher priority tickets
-        # Check weighing
+# Spit out one or multiple tickets
+# Handle higher priority tickets
+# Check weighing
 
 
-if __name__ == '__main__':
-    Backlog()
+def backlog_fetch(cur):
+    # go into db and grab backlog from api
+    sql = """SELECT * FROM 
+                 Tickets Where status = 0"""
+    response = cur.execute(sql)
+    return response
+

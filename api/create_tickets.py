@@ -1,11 +1,8 @@
 # fill in a thing
 # store in db
 
-class CreateTicket:
-    def __init__(self):
-        #
-        print()
+def create(cur):
+    sql = """INSERT INTO Tickets
+                 VALUES(%s) RETURNING vendor_id;"""
+    cur.execute(sql)
 
-
-if __name__ == '__main__':
-    CreateTicket()

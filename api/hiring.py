@@ -4,10 +4,8 @@
 # Group possible candidates
 # filter resumes?
 
-class Hiring:
-    def __init__(self):
-        print()
+def hire():
+    sql = """INSERT INTO Hiring
+                 VALUES(%s) RETURNING vendor_id;"""
+    # add roll and reason
 
-
-if __name__ == '__main__':
-    Hiring()

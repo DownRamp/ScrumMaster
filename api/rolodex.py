@@ -1,9 +1,6 @@
 # connect devs that worked and created docs and tickets
 # create map topic and names (repo: Dev)
-class Rolodex:
-    def __init__(self):
-        print()
+def get_name():
+    sql = """INSERT INTO vendors(vendor_name)
+                 VALUES(%s) RETURNING vendor_id;"""
 
-
-if __name__ == '__main__':
-    Rolodex()

@@ -11,12 +11,14 @@ CREATE DATABASE "ScrumMaster"
     TABLESPACE = pg_default
     CONNECTION LIMIT = -1;
 
+-- 0 backlog, 1 current sprint, 2 active, 3 done --
 CREATE TABLE Tickets (
 	ticket_id serial PRIMARY KEY,
    	title VARCHAR ( 50 ) UNIQUE NOT NULL,
 	label_val VARCHAR (50) NOT NULL,
    	description text NOT NULL,
    	docs int NOT NULL,
+   	status int not null,
 	priority text NOT NULL
 );
 
