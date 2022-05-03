@@ -42,6 +42,7 @@ class Backlog:
         global cur
         backlog.sprint_fetch(cur)
 
+
 class Docs:
     def get(self):
         global cur

@@ -12,6 +12,7 @@ def save_doc(cur):
     # insert into connections as well if possible
     return "Success"
 
+
 def update_doc(cur):
     sql = """UPDATE Documents 
     SET title = (%s)

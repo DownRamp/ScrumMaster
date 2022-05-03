@@ -1,5 +1,5 @@
 import streamlit as st
-from actions import backlog
+from ScrumMaster.actions import backlog
 
 
 def app():

@@ -1,5 +1,5 @@
 import streamlit as st
-from actions import create_docs
+from ScrumMaster.actions import create_docs
 
 
 def app():
