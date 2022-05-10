@@ -1,6 +1,6 @@
 #!/usr/bin/python
 import psycopg2
-from config import config
+from ScrumMaster.database.config import config
 
 
 def connect():

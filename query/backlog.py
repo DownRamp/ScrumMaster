@@ -5,7 +5,7 @@
 
 
 def backlog_fetch(cur):
-    # go into db and grab backlog from api
+    # go into db and grab backlog from query
     sql = """SELECT * FROM 
                  Tickets Where status = 0"""
     response = cur.execute(sql)
