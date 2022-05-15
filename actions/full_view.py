@@ -12,7 +12,7 @@ server = PlantUML(url='http://www.plantuml.com/plantuml/img/',
                   basic_auth={},
                   form_auth={}, http_opts={}, request_opts={})
 
-server.processes_file(abspath('./example_flow.txt'))
+server.processes_file(abspath('./diagram.txt'))
 
 
 def full_view():

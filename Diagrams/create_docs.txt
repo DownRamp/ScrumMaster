@@ -1,0 +1,9 @@
+' http://tonyballantyne.com/graphs.html#orgheadline19
+' http://graphviz.org/doc/info/shapes.html
+
+(*) --> "Create a document" as doc
+
+doc --> "/API/create/doc" as A
+A --> "DB addition" as B
+
+B --> (*)
