@@ -1,5 +1,5 @@
 import streamlit as st
-from ScrumMaster.actions import create_docs
+from ScrumMaster.actions import docs
 
 
 def app():
@@ -17,5 +17,5 @@ def app():
         if submitted:
             # add_data(task, task_status, task_due_date)
             # st.success("Added ::{} ::To Task".format(task))
-            create_docs.create(title, description, why, repo_conn, tests, devs, types)
-            st.success("Added To Documents")
+            id = docs.create(title, description, why, repo_conn, tests, devs, types)
+            st.success(f"Added To Documents with id: {id}")

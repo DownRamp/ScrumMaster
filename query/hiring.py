@@ -4,8 +4,15 @@
 # Group possible candidates
 # filter resumes?
 
-def hire():
-    sql = """INSERT INTO Hiring
-                 VALUES(%s) RETURNING vendor_id;"""
-    # add roll and reason
+deg fetch(cur):
+    sql = """SELECT * FROM Hire"""
+    response = cur.execute(sql)
+    return response.fetchall()
+
+def hire(values, conn, cur):
+    sql = """INSERT INTO Hire
+                 VALUES(%s, %s, %s) RETURNING hire_id;"""
+    response = cur.execute(sql, values)
+    conn.commit()
+    return cur.fetchone()[0]
 

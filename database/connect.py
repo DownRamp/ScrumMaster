@@ -15,7 +15,7 @@ def connect():
         conn = psycopg2.connect(**params)
 
         # create a cursor
-        return conn.cursor()
+        return conn, conn.cursor()
 
         # # execute a statement
         # print('PostgreSQL database version:')

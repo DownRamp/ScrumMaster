@@ -1,3 +1,4 @@
+# internal use for calling users
 class Sprint:
     def get(self):
         global cur

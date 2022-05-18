@@ -12,17 +12,17 @@ CREATE DATABASE "ScrumMaster"
     CONNECTION LIMIT = -1;
 
 -- 0 backlog, 1 current sprint, 2 active, 3 done --
-CREATE TABLE Tickets (
+CREATE TABLE Tickets(
 	ticket_id serial PRIMARY KEY,
    	title VARCHAR ( 50 ) UNIQUE NOT NULL,
 	label_val VARCHAR (50) NOT NULL,
    	description text NOT NULL,
    	docs int NOT NULL,
    	status int not null,
-	priority text NOT NULL
+	prty text NOT NULL
 );
 
-CREATE TABLE Documents (
+CREATE TABLE Documents(
 	doc_id serial PRIMARY KEY,
    	title VARCHAR ( 50 ) UNIQUE NOT NULL,
    	description text NOT NULL,
@@ -33,16 +33,24 @@ CREATE TABLE Documents (
 	typ VARCHAR(50) NOT NULL
 );
 
-CREATE TABLE Updates (
-   	date TIMESTAMP NOT NULL,
-	ticket_id int not null,
+CREATE TABLE Hire(
+	hire_id serial PRIMARY KEY,
+	date TIMESTAMP NOT NULL,
+	reason text not null,
+	team text not null,
+	pay_range text
+);
+
+CREATE TABLE Updates(
+	ticket_id int not null PRIMARY KEY,
+	today text NOT NULL,
 	yesterday text not null,
-	today text not null,
+	today_work text not null,
 	blockers text
 );
 
-CREATE TABLE Connections (
-   	repo1 VARCHAR(50) not null,
-	repo2 VARCHAR(50) not null,
-	description text not null
+CREATE TABLE Rolodex(
+	names text not null PRIMARY KEY,
+	title text not null,
+	email text not null,
 );
