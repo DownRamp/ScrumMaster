@@ -3,7 +3,7 @@ import json
 
 
 class Ticket:
-    def create(title, label_val, description, docs, status, prty):
+    def create(title, label_val, description, docs, status, prty, puml_txt):
         # return number
         url = 'localhost:8080/tickets'
         cr_tic = {
@@ -12,7 +12,8 @@ class Ticket:
             "description": description,
             "docs": docs,
             "status": status,
-            "prty": prty
+            "prty": prty,
+            "puml_txt": puml_txt
         }
         response = requests.post(url, data=cr_tic)
         return response
@@ -30,7 +31,8 @@ class Ticket:
         response = requests.get(url)
         return response
 
-    def update(title, label_val, description, docs, status, prty, id):
+    # delete old tickets
+    def update(title, label_val, description, docs, status, prty, puml_txt, id):
         # return number
         url = f'localhost:8080/tickets/{id}'
         cr_tic = {
@@ -39,7 +41,8 @@ class Ticket:
             "description": description,
             "docs": docs,
             "status": status,
-            "prty": prty
+            "prty": prty,
+            "puml_txt": puml_txt
         }
         response = requests.put(url, data=cr_tic)
         return response

@@ -19,7 +19,19 @@ CREATE TABLE tickets (
    	description text NOT NULL,
    	docs int NOT NULL,
    	status int not null,
-	prty text NOT NULL
+	prty text NOT NULL,
+	puml_text text[]
+);
+
+CREATE TABLE old_tickets (
+	ticket_id serial PRIMARY KEY,
+   	title VARCHAR ( 50 ) UNIQUE NOT NULL,
+	label_val VARCHAR (50) NOT NULL,
+   	description text NOT NULL,
+   	docs int NOT NULL,
+   	status int not null,
+	prty text NOT NULL,
+	puml_text text[]
 );
 
 CREATE TABLE documents(
@@ -30,7 +42,8 @@ CREATE TABLE documents(
 	repo_conn text NOT NULL,
 	tests text NOT NULL,
 	devs text NOT NULL,
-	typ VARCHAR(50) NOT NULL
+	typ VARCHAR(50) NOT NULL,
+	puml_text text[]
 );
 
 CREATE TABLE hire(
@@ -46,7 +59,8 @@ CREATE TABLE updates(
 	today text NOT NULL,
 	yesterday text not null,
 	today_work text not null,
-	blockers text
+	blockers text,
+	full_name text
 );
 
 CREATE TABLE rolodex (

@@ -1,13 +1,13 @@
 from datetime import date
 
 def parse_values(values):
-    results = (values["today"], values["yesterday"], values["today_work"], values["blockers"])
+    results = (values["today"], values["yesterday"], values["today_work"], values["blockers"], values["full_name"])
     return results
 
 # Scrum updates receive (post)
 def save_updates(values, conn):
-    sql = """INSERT INTO updates("today", "yesterday", "today_work", "blockers")
-                 VALUES(%s, %s, %s, %s) RETURNING ticket_id;"""
+    sql = """INSERT INTO updates("today", "yesterday", "today_work", "blockers", "full_name")
+                 VALUES(%s, %s, %s, %s, %s) RETURNING ticket_id;"""
     cur = conn.cursor()
     cur.execute(sql, parse_values(values))
     conn.commit()

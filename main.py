@@ -1,74 +1,52 @@
 from flask import Flask
-from flask_restful import Api, Resource, reqparse, abort, fields, marshal_with
+from flask_restful import Api, Resource, request, abort, fields, marshal_with
 import pandas as pd
 from database import connect
-from query import create_docs, create_tickets, hiring, rolodex, updates
-
-
-parser_doc = reqparse.RequestParser()
-parser_doc.add_argument("title", type=str, help="Title of document")
-parser_doc.add_argument("description", type=str, help="Description of document")
-parser_doc.add_argument("why", type=str, help="Why the need for this new feature")
-parser_doc.add_argument("repo_conn", type=str, help="How does this connect to other features")
-parser_doc.add_argument("tests", type=str, help="Tests that need to made")
-parser_doc.add_argument("devs", type=str, help="Devs with background knowledge")
-parser_doc.add_argument("typ", type=str, help="type of document(new feature, addition, etc.)")
+from query import docs, tickets, hiring, rolodex, updates
+import json
 
 class Docs(Resource):
     global conn
     def get(self):
         global cur
-        return create_docs.fetch_docs(conn)
+        return docs.fetch_docs(conn)
 
     def post(self):
-        values = parser_doc.parse_args()
-        return create_docs.save_doc(values, conn)
+        values = json.loads(request.data)
+        return docs.save_doc(values, conn)
 
 class DocsId(Resource):
     global conn
     def get(self, doc_id):
-        return create_docs.fetch_doc(doc_id, conn)
+        return docs.fetch_doc(doc_id, conn)
 
     def put(self, doc_id):
-        values = parser_doc.parse_args()
-        return create_docs.update_doc(values, doc_id, conn)
+        values = json.loads(request.data)
+        return docs.update_doc(values, doc_id, conn)
 
 class FullView(Resource):
     global conn
     def get(self):
-        return create_docs.fetch_connections(conn)
-
-parser_tic = reqparse.RequestParser()
-parser_tic.add_argument("title", type=str, help="Title of document")
-parser_tic.add_argument("label_val", type=str, help="What feature is this for")
-parser_tic.add_argument("description", type=str, help="Description of ticket")
-parser_tic.add_argument("docs", type=int, help="Document id connected")
-parser_tic.add_argument("status", type=int, help="Tests that need to made")
-parser_tic.add_argument("prty", type=str, help="Devs with background knowledge")
+        return docs.fetch_connections(conn)
 
 class Tickets(Resource):
     global conn
     def get(self):
-        return create_tickets.fetch_tickets(conn)
+        return tickets.fetch_tickets(conn)
 
     def post(self):
-        values = parser_tic.parse_args()
-        return create_tickets.save_ticket(values, conn)
+        values = json.loads(request.data)
+        return tickets.save_ticket(values, conn)
 
 
 class TicketsId(Resource):
     global conn
     def get(self, ticket_id):
-        return create_tickets.fetch_ticket(ticket_id, conn)
+        return tickets.fetch_ticket(ticket_id, conn)
 
     def put(self, ticket_id):
-        values = parser_tic.parse_args()
-        return create_tickets.update_ticket(values, ticket_id, conn)
-
-parser_hire = reqparse.RequestParser()
-parser_hire.add_argument("title", type=str, help="Title of document")
-parser_hire.add_argument("label_val", type=str, help="What feature is this for")
-parser_hire.add_argument("description", type=str, help="Description of ticket")
+        values = json.loads(request.data)
+        return tickets.update_ticket(values, ticket_id, conn)
 
 class Hiring(Resource):
     global conn
@@ -76,7 +54,7 @@ class Hiring(Resource):
         return hiring.fetch(conn)
 
     def post(self):
-        values = parser_hire.parse_args()
+        values = json.loads(request.data)
         return hiring.hire(values, conn)
 
 parser_rol = reqparse.RequestParser()
@@ -90,14 +68,8 @@ class Rolodex(Resource):
         return rolodex.get_name(conn)
 
     def post(self):
-        values = parser_rol.parse_args()
+        values = json.loads(request.data)
         return rolodex.post_name(values, conn)
-
-parser_up = reqparse.RequestParser()
-parser_up.add_argument("today", type=str, help="todays date")
-parser_up.add_argument("yesterday", type=str, help="yesterdays work")
-parser_up.add_argument("today_work", type=str, help="Todays work")
-parser_up.add_argument("blockers", type=str, help="Blockers")
 
 class Updates(Resource):
     global conn
@@ -106,7 +78,7 @@ class Updates(Resource):
         return updates.get_updates(conn)
 
     def post(self):
-        values = parser_up.parse_args()
+        values = json.loads(request.data)
         return updates.save_updates(values, conn)
 
 conn = connect.connect()
