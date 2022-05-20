@@ -1,18 +1,19 @@
-# Accept requests to hire new staff internally
-# e.g. need a new software engineer
-# Create a job posting
-# Group possible candidates
-# filter resumes?
 
-deg fetch(cur):
-    sql = """SELECT * FROM Hire"""
-    response = cur.execute(sql)
-    return response.fetchall()
+def parse_values(values):
+    results = (values["title"], values["label_val"], values["description"])
+    return results
 
-def hire(values, conn, cur):
-    sql = """INSERT INTO Hire
+def fetch(conn):
+    sql = """SELECT * FROM hire"""
+    cur = conn.cursor()
+    cur.execute(sql)
+    return cur.fetchall()
+
+def hire(values, conn):
+    cur = conn.cursor()
+    sql = """INSERT INTO hire("title", "label_val", "description")
                  VALUES(%s, %s, %s) RETURNING hire_id;"""
-    response = cur.execute(sql, values)
+    cur.execute(sql, parse_values(values))
     conn.commit()
     return cur.fetchone()[0]
 

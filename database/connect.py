@@ -1,6 +1,6 @@
 #!/usr/bin/python
 import psycopg2
-from ScrumMaster.database.config import config
+from database.config import config
 
 
 def connect():
@@ -15,7 +15,7 @@ def connect():
         conn = psycopg2.connect(**params)
 
         # create a cursor
-        return conn, conn.cursor()
+        return conn
 
         # # execute a statement
         # print('PostgreSQL database version:')
@@ -29,10 +29,10 @@ def connect():
         # cur.close()
     except (Exception, psycopg2.DatabaseError) as error:
         print(error)
-    finally:
-        if conn is not None:
-            conn.close()
-            print('Database connection closed.')
+   # finally:
+    #    if conn is not None:
+    #        conn.close()
+    #        print('Database connection closed.')
 
 
 if __name__ == '__main__':

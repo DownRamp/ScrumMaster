@@ -3,18 +3,43 @@ import json
 
 
 class Ticket:
-    def __init__(self, title, label_val, description, docs, priority):
-        self.title = title
-        self.label_val = label_val
-        self.description = description
-        self.docs = docs
-        self.priority = priority
+    def create(title, label_val, description, docs, status, prty):
+        # return number
+        url = 'localhost:8080/tickets'
+        cr_tic = {
+            "title": title,
+            "label_val": label_val,
+            "description": description,
+            "docs": docs,
+            "status": status,
+            "prty": prty
+        }
+        response = requests.post(url, data=cr_tic)
+        return response
+
+    # backlog info
+    def fetch():
+        # return number
+        url = 'localhost:8080/tickets'
+        response = requests.get(url)
+        return response
 
 
-def create(title, label_val, description, docs, priority):
-    # return number
-    url = 'localhost:8080/backlog/ticket'
-    cr_ticket = Ticket(title, label_val, description, docs, priority)
-    body = json.dumps(cr_ticket.__dict__)
-    response = requests.post(url, body)
-    return response
+    def fetch_id(id):
+        url = f'localhost:8080/tickets/{id}'
+        response = requests.get(url)
+        return response
+
+    def update(title, label_val, description, docs, status, prty, id):
+        # return number
+        url = f'localhost:8080/tickets/{id}'
+        cr_tic = {
+            "title": title,
+            "label_val": label_val,
+            "description": description,
+            "docs": docs,
+            "status": status,
+            "prty": prty
+        }
+        response = requests.put(url, data=cr_tic)
+        return response

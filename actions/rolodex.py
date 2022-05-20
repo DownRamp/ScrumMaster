@@ -1,15 +1,21 @@
 import requests
+import json
 
 
-def backlog_fetch():
-    # go into db and grab backlog from query
-    url = 'localhost:8080/backlog'
-    response = requests.get(url)
-    sprint = []
-    backlog = []
-    for tic in response:
-        if tic[5] == 0:
-            sprint.append(tic)
-        else:
-            backlog.append(tic)
-    return sprint, backlog
+class Rolodex:
+    def create(full_name, title, email):
+        # return number
+        url = 'localhost:8080/rolodex'
+        cr_rolo = {
+            "full_name": full_name,
+            "title": title,
+            "email": email
+        }
+        response = requests.post(url, data=cr_rolo)
+        return response
+
+    def fetch():
+        # return number
+        url = 'localhost:8080/rolodex'
+        response = requests.get(url)
+        return response

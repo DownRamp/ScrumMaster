@@ -1,14 +1,21 @@
 # connect devs that worked and created docs and tickets
 # create map topic and names (repo: Dev)
-def get_name(cur):
-    sql = """SELECT * FROM Rolodex"""
-    response = cur.execute(sql)
-    return response.fetchall()
 
-def post_name(values, conn, cur):
-    sql = """INSERT INTO Rolodex
+def parse_values(values):
+    results = (values["full_name"], values["title"], values["email"])
+    return results
+
+def get_name(conn):
+    sql = """SELECT * FROM rolodex"""
+    cur = conn.cursor()
+    cur.execute(sql)
+    return cur.fetchall()
+
+def post_name(values, conn):
+    sql = """INSERT INTO rolodex("full_name", "title", "email")
                  VALUES(%s, %s, %s);"""
-    cur.execute(sql, values)
+    cur = conn.cursor()
+    cur.execute(sql, parse_values(values))
     conn.commit()
     return "SUCCESS"
 

@@ -1,14 +1,24 @@
+from datetime import date
+
+def parse_values(values):
+    results = (values["today"], values["yesterday"], values["today_work"], values["blockers"])
+    return results
+
 # Scrum updates receive (post)
-def save_updates(values, conn, cur):
-    sql = """INSERT INTO Updates
+def save_updates(values, conn):
+    sql = """INSERT INTO updates("today", "yesterday", "today_work", "blockers")
                  VALUES(%s, %s, %s, %s) RETURNING ticket_id;"""
-    response = cur.execute(sql, values)
+    cur = conn.cursor()
+    cur.execute(sql, parse_values(values))
     conn.commit()
     return cur.fetchone()[0]
 
 
 # Fetch daily scrum updates (get)
-def get_updates(cur, new_date):
-    sql = """SELECT * FROM Updates WHERE today=(%s)"""
-    response = cur.execute(sql, new_date)
-    return response.fetchall()
+def get_updates(conn):
+    today = date.today()
+    day = today.strftime("%d/%m/%Y")
+    sql = f"SELECT * FROM updates WHERE today LIKE '{day}';"
+    cur = conn.cursor()
+    cur.execute(sql, day)
+    return cur.fetchall()
