@@ -18,6 +18,21 @@ class Ticket:
         response = requests.post(url, data=cr_tic)
         return response
 
+    def backlog():
+        response = fetch()
+        sprint = []
+        next = []
+        back = []
+        for item in response:
+            if item["status"] == 1:
+                sprint.add(item)
+            elif item["status"] == 2:
+                next.add(item)
+            else:
+                back.add(item)
+
+        return sprint, next, back
+
     # backlog info
     def fetch():
         # return number

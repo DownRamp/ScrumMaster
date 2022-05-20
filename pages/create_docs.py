@@ -12,10 +12,10 @@ def app():
         tests = st.text_area("Tests to be created")
         devs = st.text_area("Developers with knowledge on this (Separate with commas")
         types = st.text_input("Type(Function, repo, tool)")
+        puml_txt = st.text_area("Put in your puml text here")
+
         submitted = st.form_submit_button("Submit")
 
         if submitted:
-            # add_data(task, task_status, task_due_date)
-            # st.success("Added ::{} ::To Task".format(task))
-            id = docs.create(title, description, why, repo_conn, tests, devs, types)
+            id = docs.create(title, description, why, repo_conn, tests, devs, types, puml_txt.split("\n"))
             st.success(f"Added To Documents with id: {id}")

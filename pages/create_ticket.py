@@ -10,9 +10,10 @@ def app():
         description = st.text_area("Description")
         docs = st.text_input("Docs number")
         priority = st.text_area("Priority (High/Med/Low)")
+        puml_text = st.text_area("PUML text")
 
         submitted = st.form_submit_button("Submit")
 
         if submitted:
-            create_tickets.create(title, label_val, description, docs, priority)
-            st.success("Added To Documents")
+            id = create_tickets.create(title, label_val, description, docs, priority, puml_text.split("\n"))
+            st.success(f"Added To Tickets with id: {id}")

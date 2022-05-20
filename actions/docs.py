@@ -3,7 +3,7 @@ import json
 
 
 class Doc:
-    def create(title, description, why, repo_conn, tests, devs, types):
+    def create(title, description, why, repo_conn, tests, devs, types, puml_txt):
         # return number
         url = 'localhost:8080/docs'
         cr_doc = {
@@ -13,7 +13,8 @@ class Doc:
             "repo_conn": repo_conn,
             "tests": tests,
             "devs": devs,
-            "typ": typ
+            "typ": typ,
+            "puml_txt": puml_txt
         }
         response = requests.post(url, data=cr_doc)
         return response
@@ -35,7 +36,7 @@ class Doc:
         response = requests.get(url)
         return response
 
-    def update(title, description, why, repo_conn, tests, devs, types, id):
+    def update(title, description, why, repo_conn, tests, devs, types, puml_txt, id):
         # return number
         url = f'localhost:8080/docs/{id}'
         cr_doc = {
@@ -45,7 +46,8 @@ class Doc:
             "repo_conn": repo_conn,
             "tests": tests,
             "devs": devs,
-            "typ": typ
+            "typ": typ,
+            "puml_txt": puml_txt
         }
         response = requests.put(url, data=cr_doc)
         return response
