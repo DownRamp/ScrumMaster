@@ -3,5 +3,8 @@ from ScrumMaster.actions import docs, puml
 
 def app():
     st.title('Full view')
-    full = docs.fetch_conn()
-    st.write(full)
+    values = docs.fetch_conn()
+    full = puml.create_puml(values)
+    image = Image.open(full)
+
+    st.image(image, caption='PUML image')
