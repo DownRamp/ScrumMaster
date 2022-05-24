@@ -1,6 +1,5 @@
 import streamlit as st
-from ScrumMaster.actions import rolodex
-
+from actions import rolodex
 
 def app():
     # create page

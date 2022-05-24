@@ -2,3 +2,4 @@ database/database.ini
 .idea
 *.pyc
 database/__pycache__/*.pyc
+*/*.pyc

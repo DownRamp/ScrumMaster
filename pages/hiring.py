@@ -1,5 +1,5 @@
 import streamlit as st
-from ScrumMaster.actions import hiring
+from actions import hiring
 
 def app():
     # create page

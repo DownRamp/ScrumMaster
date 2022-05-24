@@ -1,5 +1,5 @@
 import streamlit as st
-from ScrumMaster.actions import docs, puml
+from actions import docs, puml
 
 def app():
     st.title('Full view')

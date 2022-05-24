@@ -1,5 +1,5 @@
 import streamlit as st
-from ScrumMaster.actions import tickets
+from actions import tickets
 
 
 def app():
@@ -9,6 +9,7 @@ def app():
         label_val = st.text_input("Labels")
         description = st.text_area("Description")
         docs = st.text_input("Docs number")
+        status = st.text_input("Status (1 - current, 2 - Next sprint, 3 - backlog,  0 - Finished)")
         priority = st.text_area("Priority (High/Med/Low)")
         puml_text = st.text_area("PUML text")
 

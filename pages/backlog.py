@@ -1,5 +1,5 @@
 import streamlit as st
-from ScrumMaster.actions import tickets
+from actions import tickets
 
 
 def app():

@@ -57,11 +57,6 @@ class Hiring(Resource):
         values = json.loads(request.data)
         return hiring.hire(values, conn)
 
-parser_rol = reqparse.RequestParser()
-parser_rol.add_argument("full_name", type=str, help="Name")
-parser_rol.add_argument("title", type=str, help="Job title")
-parser_rol.add_argument("email", type=str, help="Email")
-
 class Rolodex(Resource):
     global conn
     def get(self):
@@ -94,4 +89,4 @@ api.add_resource(Hiring, '/hiring')
 api.add_resource(Rolodex, '/rolodex')
 
 if __name__ == '__main__':
-    app.run(host="localhost", port=8000, debug=True)
+    app.run(host="localhost", port=8080, debug=True)

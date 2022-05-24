@@ -5,3 +5,4 @@
 
 def create_puml():
     # line by line
+    return ""
