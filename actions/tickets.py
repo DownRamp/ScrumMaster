@@ -22,7 +22,8 @@ def backlog():
     sprint = []
     next = []
     back = []
-    for item in response.json():
+    for item in response:
+        print(item)
         if item[4] == 1:
             sprint.append(item)
         elif item[4] == 2:

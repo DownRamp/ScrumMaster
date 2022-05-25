@@ -3,19 +3,19 @@ def parse_value(values):
     #columns = list(first_record.keys())
     #sql_string += "(" + ', '.join(columns) + ")\nVALUES "
     results = (values["title"], values["description"],values["why"], values["repo_conn"], values["tests"],
-    values["devs"], values["typ"])
+    values["devs"], values["typ"], values["puml_txt"])
     return results
 
 def parse_values(values, id):
     #columns = list(first_record.keys())
     #sql_string += "(" + ', '.join(columns) + ")\nVALUES "
     results = (values["title"], values["description"],values["why"], values["repo_conn"], values["tests"],
-    values["devs"], values["typ"], id)
+    values["devs"], values["typ"], values["puml_txt"], id)
     return results
 
 def save_doc(values, conn):
-    sql = """INSERT INTO Documents("title", "description", "why", "repo_conn", "tests", "devs", "typ")
-                 VALUES(%s, %s, %s, %s, %s, %s, %s) RETURNING doc_id"""
+    sql = """INSERT INTO Documents("title", "description", "why", "repo_conn", "tests", "devs", "typ", puml_txt)
+                 VALUES(%s, %s, %s, %s, %s, %s, %s, %s) RETURNING doc_id"""
     # insert into connections as well if possible
     cur = conn.cursor()
     cur.execute(sql, parse_value(values))
@@ -32,6 +32,7 @@ def update_doc(values, id, conn):
     tests = (%s),
     devs = (%s),
     typ = (%s)
+    puml_txt = (%s)
     WHERE doc_id =(%s);"""
     cur = conn.cursor()
     cur.execute(sql, parse_values(values, id))

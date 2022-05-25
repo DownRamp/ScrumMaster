@@ -13,7 +13,6 @@ def save_updates(values, conn):
     conn.commit()
     return cur.fetchone()[0]
 
-
 # Fetch daily scrum updates (get)
 def get_updates(conn):
     today = date.today()
