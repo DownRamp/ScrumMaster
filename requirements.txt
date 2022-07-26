@@ -1,8 +1,9 @@
+Flask==2.1.2
+Flask_RESTful==0.3.9
+mock==4.0.3
+pandas==1.4.2
+Pillow==9.2.0
 plantuml==0.3.0
-httplib2==0.20.4
-pyparsing==3.0.8
+psycopg2==2.9.3
 requests==2.27.1
-urllib3==1.26.9
-idna==3.3
-charset-normalizer==2.0.12
 streamlit==1.8.1

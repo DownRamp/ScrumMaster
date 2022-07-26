@@ -12,7 +12,9 @@ def create(today, yesterday, today_work, blockers, full_name):
         "blockers": blockers,
         "full_name": full_name
     }
-    response = requests.post(url, data=cr_upd)
+    json_string = json.dumps(cr_upd)
+
+    response = requests.post(url, data=json_string)
     return response.json()
 
 def fetch():

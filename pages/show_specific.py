@@ -5,5 +5,5 @@ from actions import docs, puml
 def app():
     st.title('Show Doc')
     doc = saver.docs()
-    puml.create_puml(doc["puml_txt"])
+    st.image(puml.create_puml(doc[8]))
     st.write(doc)

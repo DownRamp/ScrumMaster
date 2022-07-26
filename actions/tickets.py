@@ -14,7 +14,9 @@ def create(title, label_val, description, docs, status, prty, puml_txt):
         "prty": prty,
         "puml_txt": puml_txt
     }
-    response = requests.post(url, data=cr_tic)
+    json_string = json.dumps(cr_tic)
+
+    response = requests.post(url, data=json_string)
     return response.json()
 
 def backlog():
@@ -23,7 +25,6 @@ def backlog():
     next = []
     back = []
     for item in response:
-        print(item)
         if item[4] == 1:
             sprint.append(item)
         elif item[4] == 2:
@@ -59,5 +60,7 @@ def update(title, label_val, description, docs, status, prty, puml_txt, id):
         "prty": prty,
         "puml_txt": puml_txt
     }
-    response = requests.put(url, data=cr_tic)
+    json_string = json.dumps(cr_tic)
+
+    response = requests.put(url, data=json_string)
     return response.json()

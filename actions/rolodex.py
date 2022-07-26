@@ -10,7 +10,9 @@ def create(full_name, title, email):
         "title": title,
         "email": email
     }
-    response = requests.post(url, data=cr_rolo)
+    json_string = json.dumps(cr_rolo)
+
+    response = requests.post(url, data=json_string)
     return response.json()
 
 def fetch():

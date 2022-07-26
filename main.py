@@ -13,6 +13,7 @@ class Docs(Resource):
 
     def post(self):
         values = json.loads(request.data)
+        print(values)
         return docs.save_doc(values, conn)
 
 class DocsId(Resource):

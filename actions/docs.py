@@ -12,10 +12,11 @@ def create(title, description, why, repo_conn, tests, devs, types, puml_txt):
         "repo_conn": repo_conn,
         "tests": tests,
         "devs": devs,
-        "typ": typ,
+        "typ": types,
         "puml_txt": puml_txt
     }
-    response = requests.post(url, data=cr_doc)
+    json_string = json.dumps(cr_doc)
+    response = requests.post(url, data=json_string)
     return response.json()
 
 def fetch():
@@ -48,5 +49,6 @@ def update(title, description, why, repo_conn, tests, devs, types, puml_txt, id)
         "typ": typ,
         "puml_txt": puml_txt
     }
-    response = requests.put(url, data=cr_doc)
+    json_string = json.dumps(cr_doc)
+    response = requests.put(url, data=json_string)
     return response.json()

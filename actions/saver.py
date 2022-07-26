@@ -47,9 +47,12 @@ rol_map = {}
 upd_map = {}
 
 # hold all current info
-def fetch_data():
-    print()
+def docs():
+    return doc_map
 
 # update current info
-def update_data():
+def update_hiring():
+    print()
+
+def update_docs():
     print()

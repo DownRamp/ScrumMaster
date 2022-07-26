@@ -1,0 +1,11 @@
+plantuml
+httplib2
+pyparsing
+requests
+urllib3
+idna
+charset-normalizer
+streamlit
+flask
+flask_restful
+psycopg2

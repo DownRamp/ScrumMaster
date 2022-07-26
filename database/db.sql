@@ -39,7 +39,7 @@ CREATE TABLE documents(
    	title VARCHAR ( 50 ) UNIQUE NOT NULL,
    	description text NOT NULL,
    	why text NOT NULL,
-	repo_conn text NOT NULL,
+	repo_conn text,
 	tests text NOT NULL,
 	devs text NOT NULL,
 	typ VARCHAR(50) NOT NULL,

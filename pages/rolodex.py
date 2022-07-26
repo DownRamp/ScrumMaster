@@ -4,9 +4,13 @@ from actions import rolodex
 def app():
     # create page
     st.title('Rolodex')
-    st.write("Current employees: ")
+    st.header("Current employees: ")
     ppl = rolodex.fetch()
-    st.write(ppl)
+    for person in ppl:
+        st.write(f"Name: {person[0]}")
+        st.write(f"Title: {person[1]}")
+        st.write(f"Email: {person[2]}")
+        st.markdown("""---""")
 
     # show open positions
     with st.form("my_form"):

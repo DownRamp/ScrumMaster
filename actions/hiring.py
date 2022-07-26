@@ -10,7 +10,9 @@ def create(title, label_val, description):
         "label_val": label_val,
         "description": description
     }
-    response = requests.post(url, data=cr_hire)
+    json_string = json.dumps(cr_hire)
+
+    response = requests.post(url, data=json_string)
     return response.json()
 
 def fetch():
