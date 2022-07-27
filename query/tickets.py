@@ -19,7 +19,6 @@ def save_ticket(values, conn):
     conn.commit()
     return cur.fetchone()[0]
 
-
 def delete_ticket(id, conn):
     sql = """DELETE FROM Tickets WHERE ticket_id = %s;"""
     cur = conn.cursor()

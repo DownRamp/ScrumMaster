@@ -1,5 +1,6 @@
 import streamlit as st
-from actions import tickets
+from actions import tickets, updates
+from datetime import date
 
 def formation(value):
     st.write(f"Ticket id: {value[0]}")
@@ -14,9 +15,26 @@ def formation(value):
 
 def app():
     st.title('Backlog')
+    upds = updates.fetch()
+    with st.sidebar:
+        st.write(upds)
+        with st.form("my_form"):
+            st.title('Add an update')
+            full_name = st.text_input("Full Name")
+            blockers = st.text_input("Blockers")
+            today_work = st.text_input("Todays work")
+            yesterday = st.text_input("Yesterday work")
+
+            submitted = st.form_submit_button("Submit")
+            if submitted:
+                today = datetime.today().strftime("%d/%m/%Y")
+                id = updates.create(full_name, title, email)
+                st.success(f"Added To Documents with id: {id}")
+
     st.header("Current sprint: ")
     st.markdown("""---""")
     sprint, next, back = tickets.backlog()
+
     #title, label_val, description, docs, status, prty, puml_txt
     for tic in sprint:
         formation(tic)

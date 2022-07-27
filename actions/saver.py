@@ -50,9 +50,30 @@ upd_map = {}
 def docs():
     return doc_map
 
-# update current info
-def update_hiring():
-    print()
+def tics():
+    return tic_map
 
-def update_docs():
-    print()
+def hirs():
+    return hir_map
+
+def rols():
+    return rol_map
+
+def upds():
+    return upd_map
+
+# update current info
+def update_hiring(hire, id):
+    hir_map[id] = hire
+
+def update_docs(doc, id):
+    doc_map[id] = doc
+
+def update_ticket(tic, id):
+    tic_map[id] = tic
+
+def update_rol(rol, id):
+    rol_map[id] = rol
+
+def update_upd(upd, id):
+    upd_map[id] = upd

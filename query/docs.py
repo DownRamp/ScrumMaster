@@ -22,7 +22,6 @@ def save_doc(values, conn):
     conn.commit()
     return cur.fetchone()[0]
 
-
 def update_doc(values, id, conn):
     sql = """UPDATE Documents 
     SET title = (%s),
@@ -52,7 +51,7 @@ def fetch_docs(conn):
     return cur.fetchall()
 
 def fetch_connections(conn):
-    sql = """SELECT DISTINCT repo_conn FROM Documents"""
+    sql = """SELECT doc_id, repo_conn FROM Documents"""
     cur = conn.cursor()
     cur.execute(sql)
     return cur.fetchall()

@@ -1,17 +1,26 @@
 import json
-from tests.utils import make_token
 
+# cant get db to run during
 
-def test_api(client):
-    token = make_token(2)
+def test_doc_post(client):
+    data = {"tags": ["travel", "vacation"], "text": "my text", "authorIds": [1, 5]}
     response = client.post(
-        "/api/gen"
+        "/docs",
+        data=json.dumps(data),
     )
 
     assert json.dumps(response.json, sort_keys=True) == json.dumps(
         gen, sort_keys=True
     )
 
+def test_api(client):
+    response = client.post(
+        "/docs"
+    )
+
+    assert json.dumps(response.json, sort_keys=True) == json.dumps(
+        gen, sort_keys=True
+    )
 
 gen = {
     "generator": {
