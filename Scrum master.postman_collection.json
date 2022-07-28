@@ -1,0 +1,387 @@
+{
+	"info": {
+		"_postman_id": "a90f5401-e31e-4fad-a03f-062a0e541906",
+		"name": "Scrum master",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "21043585"
+	},
+	"item": [
+		{
+			"name": "Ticket",
+			"item": [
+				{
+					"name": "Add ticket",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"Test endpoints new 2\",\n    \"label_val\": \"scrum master\",\n    \"description\": \"Send basic request to api\",\n    \"docs\": 1,\n    \"status\": 1,\n    \"prty\": \"HIGH\",\n    \"puml_txt\": [\n        \"(*) --> \"The first block\" as first\",\n        \"first --> (*)\"\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/tickets",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"tickets"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get ticket",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/tickets",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"tickets"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Ticket with id",
+			"item": [
+				{
+					"name": "Update ticket",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"Test endpoints BLAH\",\n    \"label_val\": \"scrum master\",\n    \"description\": \"Send basic request to api\",\n    \"docs\": 1,\n    \"status\": 1,\n    \"prty\": \"HIGH\",\n    \"puml_txt\": [\n        \"* -> api as a\",\n        \"a -> *\"\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8000/tickets/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"tickets",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get single with id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8000/tickets/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"tickets",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Document",
+			"item": [
+				{
+					"name": "Get Documents",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8000/docs",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"docs"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add document",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"Scrum Master\", \"description\": \"Stuff\", \"why\": \"Stuff\", \"repo_conn\": \"\", \"tests\": \"Some\", \"devs\": \"Daniel\", \"typ\": \"Repo\", \"puml_txt\": [\n        \"\\\\(\\\\*\\\\)\\\\ \\\\-\\\\->\\\\ 'User'\\\\ as\\\\ user\\\\\", \n        \"user\\\\ \\\\-\\\\->\\\\ 'Website'\\\\ as\\\\ web\\\\\", \n        \"user\\\\ \\\\-\\\\->\\\\ 'Sprint\\\\ update\\\\ \\\\(POST\\\\)'\\\\ as\\\\ upsprint\\\\\", \n        \"web\\\\ \\\\-\\\\->\\\\ 'Create\\\\ doc\\\\ \\\\(POST\\\\)'\\\\ as\\\\ doc\\\\\", \n        \"\\\\ \\\\ \\\\ \\\\ \\\\-\\\\->\\\\ 'API'\\\\ as\\\\ api\\\\\", \n        \"web\\\\ \\\\-\\\\->\\\\ 'Create\\\\ ticket\\\\ \\\\(POST\\\\)'\\\\ as\\\\ ticket\\\\\", \n        \"\\\\ \\\\ \\\\ \\\\ \\\\-\\\\->\\\\ api\\\\\", \n        \"web\\\\ \\\\-\\\\->\\\\ 'Update\\\\ doc\\\\ \\\\(POST\\\\)'\\\\ as\\\\ updoc\\\\\", \n        \"\\\\ \\\\ \\\\ \\\\ \\\\-\\\\->\\\\ api\\\\\", \n        \"web\\\\ \\\\-\\\\->\\\\ 'Update\\\\ ticket\\\\ \\\\(POST\\\\)'\\\\ as\\\\ upticket\\\\\", \n        \"\\\\ \\\\ \\\\ \\\\ \\\\-\\\\->\\\\ api\\\\\", \n        \"web\\\\ \\\\-\\\\->\\\\ 'Hiring\\\\ \\\\(POST\\\\)'\\\\ as\\\\ ticket\\\\\", \n        \"\\\\ \\\\ \\\\ \\\\ \\\\-\\\\->\\\\ api\\\\\", \n        \"web\\\\ \\\\-\\\\->\\\\ 'Fetch\\\\ sprint\\\\ updates\\\\ \\\\(GET\\\\)'\\\\ as\\\\ sprint\\\\\", \"\\\\ \\\\ \\\\ \\\\ \\\\-\\\\->\\\\ api\\\\\", \"web\\\\ \\\\-\\\\->\\\\ 'Backlog\\\\ \\\\(GET\\\\)'\\\\ as\\\\ ticket\\\\\", \"\\\\ \\\\ \\\\ \\\\ \\\\-\\\\->\\\\ api\\\\\", \"web\\\\ \\\\-\\\\->\\\\ 'Fetch\\\\ full\\\\ view\\\\ \\\\(GET\\\\)'\\\\ as\\\\ full\\\\\", \"\\\\ \\\\ \\\\ \\\\ \\\\-\\\\->\\\\ 'Create\\\\ puml'\\\\ as\\\\ puml\\\\\", \"\\\\ \\\\ \\\\ \\\\ \\\\-\\\\->\\\\ api\\\\\", \"web\\\\ \\\\-\\\\->\\\\ 'Rolodex\\\\ \\\\(GET\\\\)'\\\\ as\\\\ rolo\\\\\", \"\\\\ \\\\ \\\\ \\\\ \\\\-\\\\->\\\\ api\\\\\", \"web\\\\ \\\\-\\\\->\\\\ 'Show\\\\ docs\\\\ \\\\(GET\\\\)'\\\\ as\\\\ show\\\\\", \"\\\\ \\\\ \\\\ \\\\ \\\\-\\\\->\\\\ puml\\\\\", \"\\\\ \\\\ \\\\ \\\\ \\\\-\\\\->\\\\ api\\\\\", \"api\\\\ \\\\-\\\\->\\\\ \\\\(\\\\*\\\\)\"]\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/docs",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"docs"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Document with id",
+			"item": [
+				{
+					"name": "Get document with id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8000/docs/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"docs",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update a document",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"Scrum master API\",\n    \"description\": \"A api and webpage that will substitute for a scrum master\",\n    \"why\": \"Useful for independent startups and people that can't afford a scrum master\",\n    \"repo_conn\": \"\",\n    \"tests\": \"Each endpoint\",\n    \"devs\": \"Daniel\",\n    \"typ\": \"Product\",\n        \"puml_txt\": [\n        \"* -> api as a\",\n        \"a -> *\"\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8000/docs/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"docs",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Hiring",
+			"item": [
+				{
+					"name": "get all needed job postings",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8000/hiring",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"hiring"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Post a job hiring",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\" : \"Front end developer\",\n    \"label_val\": \"Scrum master\",\n    \"description\": \"Require a new front end developer to create a react UI to replace existing python UI\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8000/hiring",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"hiring"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Updates",
+			"item": [
+				{
+					"name": "get todays sprint updates",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8000/update",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add sprint update",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"today\":\"20/05/2022\",\n    \"yesterday\": \"End to end testing\",\n    \"today_work\": \"Test\",\n    \"blockers\": \"None\",\n    \"full_name\": \"Dev guy 2022\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8000/update",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"update"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Rolodex",
+			"item": [
+				{
+					"name": "get all workers",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8000/rolodex",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"rolodex"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add a worker",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"full_name\": \"Daniel\",\n    \"title\": \"Software Developer\",\n    \"email\": \"daniel.daniel@daniel.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8000/rolodex",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"rolodex"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "FullView",
+			"item": [
+				{
+					"name": "Get full view",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/full",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"full"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

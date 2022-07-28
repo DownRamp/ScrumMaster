@@ -11,8 +11,6 @@ def app():
         submitted = st.form_submit_button("Submit")
 
         if submitted:
-            print(documents)
             doc = documents.get(int(id))
-            print(doc)
             st.image(puml.create_puml(doc.title, doc.puml_txt))
             st.write(doc)
