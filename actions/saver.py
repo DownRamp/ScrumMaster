@@ -19,6 +19,10 @@ class Document:
         self.devs = devs
         self.types = types
         self.puml_txt = puml_txt
+    def __str__(self):
+        return f"{self.title}, {self.clean_puml(self.puml_txt)}"
+    def clean_puml(self, puml_txt):
+        return [p.replace("\\","").replace("'", "\"") for p in puml_txt]
 
 class Updates:
     def __init__(self, today, yesterday, today_work, blockers, full_name):

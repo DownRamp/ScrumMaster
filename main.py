@@ -1,6 +1,5 @@
 from flask import Flask
 from flask_restful import Api, Resource, request, abort, fields, marshal_with
-import pandas as pd
 from database import connect
 from query import docs, tickets, rolodex, updates
 import json

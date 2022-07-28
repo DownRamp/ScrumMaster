@@ -1,10 +1,11 @@
 import requests
 import json
-import saver
+from actions import saver
+#from saver import update_docs, Document
 
 def multi_update_saver(responses):
-    for i in response:
-        saver.update_docs(saver.Document(i[1], i[2], i[3], i[4], i[5], i[6], i[7], i[8]),i[0])
+    for i in responses:
+        saver.update_docs(saver.Document(i[1], i[2], i[3], i[8], i[4], i[5], i[6], i[7]),i[0])
 
 def update_saver(title, description, why, repo_conn, tests, devs, types, puml_txt, id):
     saver.update_docs(saver.Document(title, description, why, repo_conn, tests, devs, types, puml_txt),id)
@@ -36,7 +37,7 @@ def fetch():
 
 def fetch_conn():
     # return number
-    url = 'http://localhost:8080/full_view'
+    url = 'http://localhost:8080/full'
     response = requests.get(url)
     return response.json()
 

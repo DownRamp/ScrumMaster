@@ -1,0 +1,17 @@
+' http://tonyballantyne.com/graphs.html#orgheadline19
+' http://graphviz.org/doc/info/shapes.html
+
+(*) --> "User" as user
+user --> "asdf" as asdf
+user --> "ScrummasterAPI" as ScrummasterAPI
+user --> "LifeFunctions" as LifeFunctions
+user --> "ScrumMaster" as ScrumMaster
+asdf --> "internal resource" as internal
+ScrummasterAPI --> internal
+    --> LifeFunctions
+    --> asdf
+LifeFunctions --> internal
+    --> ScrumMaster
+ScrumMaster --> internal
+    --> ScrummasterAPI
+internal --> (*)

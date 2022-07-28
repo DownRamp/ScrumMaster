@@ -27,9 +27,9 @@ def app():
 
             submitted = st.form_submit_button("Submit")
             if submitted:
-                today = datetime.today().strftime("%d/%m/%Y")
-                id = updates.create(full_name, title, email)
-                st.success(f"Added To Documents with id: {id}")
+                today = date.today().strftime("%d/%m/%Y")
+                id = updates.create(today, yesterday, today_work, blockers, full_name)
+                st.success(f"Added To Updates Successfully")
 
     st.header("Current sprint: ")
     st.markdown("""---""")

@@ -1,5 +1,5 @@
 import streamlit as st
-from actions import puml
+from actions import puml, saver
 
 # show specific one with call to puml
 def app():
@@ -11,6 +11,8 @@ def app():
         submitted = st.form_submit_button("Submit")
 
         if submitted:
-            doc = documents.get(id)
-            st.image(puml.create_puml(doc.title, doc.puml_txt)
+            print(documents)
+            doc = documents.get(int(id))
+            print(doc)
+            st.image(puml.create_puml(doc.title, doc.puml_txt))
             st.write(doc)

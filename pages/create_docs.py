@@ -30,6 +30,10 @@ web --> 'Show docs (GET)' as show
     --> api
 api --> (*)"""
 
+def filter_list(value):
+    if(value != ""):
+        return list(map(int, value.split(",")))
+
 # escape special characters
 def clean_up(value):
     return re.escape(value)
@@ -40,7 +44,6 @@ def app():
         title = st.text_input("Title")
         description = st.text_area("Description")
         why = st.text_input("Background and why")
-        #1,2,3
         repo_conn = st.text_area("Input all program connections by doc id(Separate with commas)")
         tests = st.text_area("Tests to be created")
         devs = st.text_area("Developers with knowledge on this (Separate with commas)")
@@ -53,5 +56,5 @@ def app():
         submitted = st.form_submit_button("Submit")
 
         if submitted:
-            id = docs.create(title, description, why, repo_conn, tests, devs, types, clean_up(puml_txt).split("\n"))
+            id = docs.create(title, description, why, filter_list(repo_conn), tests, devs, types, clean_up(puml_txt).split("\n"))
             st.success(f"Added To Documents with id: {id}")

@@ -1,7 +1,7 @@
 from PIL import Image
 from plantuml import PlantUML
 from os.path import abspath
-from saver import docs
+from actions import saver
 
 def process_puml(path):
     try:
@@ -9,19 +9,19 @@ def process_puml(path):
                                   basic_auth={},
                                   form_auth={}, http_opts={}, request_opts={})
         server.processes_file(abspath(f"./{path}.txt"))
-    except e:
-        print(e)
+    except:
+        print("ERROR PUML GEN")
 
 def create_puml(name, value):
     if name is None or value is None:
         return
     # line by line
-    path = "../Diagrams/"+name
+    path = "./Diagrams/"+name
     file = open(path+".txt","w+")
     file.write("' http://tonyballantyne.com/graphs.html#orgheadline19\n")
     file.write("' http://graphviz.org/doc/info/shapes.html\n")
     file.write("\n")
-    for line in example:
+    for line in value:
         file.write(line.replace("\\","").replace("'", "\"")+"\n")
     file.close()
     process_puml(path)
@@ -29,10 +29,10 @@ def create_puml(name, value):
     return image
 
 def create_full_puml(name, value):
-    documents = docs()
+    documents = saver.docs()
     if name is None or value is None:
         return
-    path = "../Diagrams/"+name
+    path = "./Diagrams/"+name
     file = open(path+".txt","w+")
     file.write("' http://tonyballantyne.com/graphs.html#orgheadline19\n")
     file.write("' http://graphviz.org/doc/info/shapes.html\n")
@@ -42,7 +42,7 @@ def create_full_puml(name, value):
     flag = True
     for conn in value:
         # Get names
-        main_title = documents.get(conn[0]).title
+        main_title = documents.get(conn[0]).title.replace(" ","")
         # start connection string
         file.write(f'user --> "{main_title}" as {main_title}\n')
         if flag:
@@ -50,11 +50,11 @@ def create_full_puml(name, value):
             flag = False
         else:
             inner.append(f"{main_title} --> internal\n")
-
-        for index, i in enumerate(conn[1]):
-            # Write connection string
-            inner_title = documents.get(i).title
-            inner.append(f"    --> {inner_title}\n")
+        if(conn[1] is not None):
+            for index, i in enumerate(conn[1]):
+                # Write connection string
+                inner_title = documents.get(i).title.replace(" ","")
+                inner.append(f"    --> {inner_title}\n")
 
     for i in inner:
         file.write(i)
