@@ -7,3 +7,4 @@
 - Reminder messages to send daily updates
 - Fix dockerfile
 - Can't go directly to show_specific or full_view (no data loaded), need to add doc fetch
+- How to close tickets?

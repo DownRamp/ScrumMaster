@@ -2,16 +2,24 @@
 ' http://graphviz.org/doc/info/shapes.html
 
 (*) --> "User" as user
-user --> "title1" as title1
-user --> "title2" as title2
-user --> "title3" as title3
-user --> "title4" as title4
-title1 --> "internal resource" as internal
-    --> title2
-title2 --> internal
-    --> title1
-title3 --> internal
-    --> title2
-title4 --> internal
-    --> title2
+user --> "stock GUI" as stonk
+user --> "Add stock" as add
+user --> "Update stock" as update
+user --> "Get stocks" as gst
+user --> "Get stock suggestion" as suggest
+user --> "Get dividends" as dividend
+user --> "Get success or fail" as stat
+stonk --> "internal resource" as internal
+    --> add
+    --> update
+    --> gst
+    --> dividend
+    --> suggest
+    --> stat
+add --> internal
+gst --> internal
+update --> internal
+suggest --> internal
+stat --> internal
+dividend --> internal
 internal --> (*)
